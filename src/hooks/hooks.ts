@@ -18,13 +18,11 @@ export const useInfiniteScroll = (
       if (entry.isIntersecting && hasMore && !loading) {
         fetchData();
       }
-    },
-    [fetchData, hasMore, loading]
-  );
+    }, [fetchData, hasMore, loading]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.5,
+      threshold: 1.0,
     });
 
     if (loadMoreRef.current) {
@@ -36,7 +34,7 @@ export const useInfiniteScroll = (
         observer.unobserve(loadMoreRef.current);
       }
     };
-  }, [handleIntersection]);
+  }, [loadMoreRef.current]);
 
   return { loadMoreRef };
 };

@@ -72,11 +72,11 @@ export const moviesSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(fetchMovie.pending, (state) => {
-        state.isLoaded = true;
+        state.isLoaded = false;
         state.error = undefined;
       })
       .addCase(fetchMovie.fulfilled, (state, action) => {
-        state.isLoaded = false;
+        state.isLoaded = true;
         state.data = action.payload;
       })
       .addCase(fetchMovie.rejected, (state, action) => {

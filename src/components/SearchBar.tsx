@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import FilterIcon from '@/assets/icons/filter-icon.svg?react';
 
@@ -8,10 +8,15 @@ export function SearchBar() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  useEffect(() => {
+    if (!location.pathname.includes(`/search/${encodeURIComponent(query)}`) && query !== '') {
+      setQuery('');
+    }
+  }, [location]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
-  }
+  };
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -45,4 +50,4 @@ export function SearchBar() {
       )}
     </form>
   );
-};
+}

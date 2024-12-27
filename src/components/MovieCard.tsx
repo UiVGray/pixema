@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { IMovieCardProps } from '@/types/types';
-import poster from '@/assets/poster-blob.avif'
+import poster from '@/assets/poster-blob.avif';
 
 export function MovieCard(props: IMovieCardProps) {
   const getRatingColor = (props: IMovieCardProps): string => {
@@ -12,7 +12,7 @@ export function MovieCard(props: IMovieCardProps) {
 
   return (
     <article className="grid grid-rows-[auto_1fr] relative h-full w-full rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-[1.02] dark:shadow-zinc-500">
-      <div className="relative w-full h-96 overflow-hidden">
+      <div className="relative w-72 h-96 overflow-hidden">
         <Link to={`/${props.id}`}>
           <img
             loading="lazy"

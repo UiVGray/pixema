@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom';
 import { useDarkMode } from '@/config/contexts/darkMode'
 import HomeIcon from '@/assets/icons/home-icon.svg?react';
 import TrendsIcon from '@/assets/icons/trends-icon.svg?react';
-import SettingsIcon from '@/assets/icons/settings-icon.svg?react';
 
 export function Menu() {
 
@@ -30,12 +29,6 @@ export function Menu() {
               <NavLink className="flex items-center gap-5 p-3 rounded-lg transition-colors text-zinc-500 dark:text-white hover:bg-zinc-50 dark:hover:text-violet-500 aria-[current=page]:text-violet-500 aria-[current=page]:bg-violet-50" to="/popular">
                 <TrendsIcon className="fill-current hover:fill-violet-500" />
                 <span className="font-semibold">Trends</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className="flex items-center gap-5 p-3 rounded-lg transition-colors text-zinc-500 dark:text-white hover:bg-zinc-50 dark:hover:text-violet-500 aria-[current=page]:text-violet-500 aria-[current=page]:bg-violet-50" to="/auth/signin">
-                <SettingsIcon className="fill-current hover:fill-violet-500" />
-                <span className="font-semibold">Sign In</span>
               </NavLink>
             </li>
           </ul>

@@ -17,7 +17,7 @@ export function Movie() {
     dispatch(fetchMovie(movieId));
   }, [movieId, dispatch]);
 
-  if (isLoaded) {
+  if (!isLoaded) {
     return (
       <div>Loading...</div>
     );

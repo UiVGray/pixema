@@ -14,7 +14,6 @@ export function PopularMoviesList() {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [hasFetchedPage1, setHasFetchedPage1] = useState(false);
 
   const loadMovies = () => {
     if (hasMore && !loading) {
@@ -26,11 +25,10 @@ export function PopularMoviesList() {
   const { loadMoreRef } = useInfiniteScroll(loadMovies, hasMore, loading);
 
   useEffect(() => {
-    if (page == 1 && !hasFetchedPage1) {
+    if (page === 1) {
       loadMovies();
-      setHasFetchedPage1(true);
     }
-  }, [page, hasFetchedPage1]);
+  }, []);
 
   const handleFetchSuccess = (newMovies: IMovieCardProps[]) => {
     if (newMovies.length > 0) {
@@ -46,7 +44,7 @@ export function PopularMoviesList() {
       if (newMovies.length < 10) {
         setHasMore(false);
       } else {
-        setPage((prevPage) => prevPage + 1);
+        setTimeout(() => setPage((prevPage) => prevPage + 1), 300);
       }
     }
   };
@@ -75,7 +73,7 @@ export function PopularMoviesList() {
 
   return (
     <>
-      <section aria-label="Movie grid" className="overflow-y-auto h-[calc(100vh-100px)]">
+      <section aria-label="Movie grid">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8">
           {renderCards()}
         </div>
