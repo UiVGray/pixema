@@ -1,19 +1,24 @@
 import { Outlet } from 'react-router-dom';
-import { Container } from './Container';
 import { Header } from './Header';
+import { Menu } from './Menu';
+import { Container } from './Container';
 import { Main } from './Main';
-import '@/styles/layout.scss';
 
 export function Layout() {
 
   return (
-    <div className="layout">
-      <Header />
-      <Container>
-        <Main>
-          <Outlet />
-        </Main>
-      </Container>
+    <div className="flex h-screen">
+      <div className="flex flex-col w-64">
+        <Menu />
+      </div>
+      <div className="flex-1 overflow-y-auto dark:bg-black">
+        <Header />
+        <Container>
+          <Main>
+            <Outlet />
+          </Main>
+        </Container>
+      </div>
     </div>
   );
 }

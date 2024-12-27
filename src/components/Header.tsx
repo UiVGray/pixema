@@ -1,18 +1,13 @@
-import { Menu } from './Menu';
 import { User } from './User';
-import { SearchForm } from './SearchForm';
-import '@/styles/header.scss';
+import { SearchBar } from './SearchBar';
 
 export function Header() {
 
   return (
-    <header className="header">
+    <header className="flex justify-between items-center sticky top-0 z-10 w-full h-16 bg-white dark:bg-black px-8 my-8">
+      <SearchBar />
       <div>
-        <Menu />
-      </div>
-      <SearchForm />
-      <div>
-        <User />
+        <User firstName={'Some'} lastName={'User'} />
       </div>
     </header>
   );

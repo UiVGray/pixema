@@ -1,6 +1,4 @@
-import React from 'react';
+export function Title(props: { children: string }) {
 
-export function Title(props: { children: React.ReactNode }) {
-
-  return <h1 className="title">{props.children}</h1>
+  return <h1 className="w-max text-4xl p-2.5 mb-12">{props.children}</h1>
 }

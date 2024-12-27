@@ -1,7 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Movie } from './pages/Movie';
-import { Profile } from './pages/Profile';
 import { Home } from './pages/Home';
+import { Movie } from './pages/Movie';
+import { MoviesPopular } from './pages/MoviesPopular';
+import { MoviesSearch } from './pages/MoviesSearch';
+import { ErrorPage } from './pages/ErrorPage';
 import { Layout } from './components/Layout';
 
 export const router = createBrowserRouter([
@@ -10,16 +12,24 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home />
+        element: <Home />,
+      },
+      {
+        path: 'popular',
+        element: <MoviesPopular />
+      },
+      {
+        path: 'search/:query/',
+        element: <MoviesSearch />
       },
       {
         path: '/:movieId',
         element: <Movie />
       },
       {
-        path: '/profile',
-        element: <Profile />,
-      }
+        path: '/error',
+        element: <ErrorPage />
+      },
     ]
   }
 ]);

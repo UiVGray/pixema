@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Container(props: { children: React.ReactNode }) {
+export function Container(props: { children: React.JSX.Element }) {
 
-  return <div className="container">{props.children}</div>;
+  return <div className="flex flex-col items-center p-8">{props.children}</div>;
 }

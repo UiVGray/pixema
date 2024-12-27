@@ -1,8 +1,4 @@
 {
-  "include": [
-    "src",
-    "src/custom.d.ts"
-  ],
   "files": [],
   "references": [
     {
@@ -13,9 +9,11 @@
     },
   ],
   "compilerOptions": {
+    "composite": true,
     "types": [
+      "vite-plugin-svgr/client",
       "vite/client",
       "node"
     ],
-  }
+  },
 }

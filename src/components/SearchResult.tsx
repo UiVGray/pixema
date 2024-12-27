@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { fetchMovies } from '@/redux/movies-slice';
+import { fetchMoviesBySearch } from '@/redux/movies-slice';
 import { MovieCard } from './MovieCard';
 import { RootState } from '@/redux/store';
 import { useAppDispatch } from '@/hooks/hooks';
 import { useInfiniteScroll } from '@/hooks/hooks';
 import { IMovieCardProps } from '@/types/types';
 
-export function MoviesList() {
-  const { list: fetchedMovies, isLoaded, error } = useSelector((state: RootState) => state.movies);
+export function SearchResult() {
+  const { searchResult: fetchedMovies, isLoaded, error } = useSelector((state: RootState) => state.movies);
+  const { query: encodedQuery } = useParams();
   const dispatch = useAppDispatch();
   const [movies, setMovies] = useState<IMovieCardProps[]>([]);
   const [page, setPage] = useState(1);
@@ -17,9 +19,9 @@ export function MoviesList() {
   const [hasFetchedPage1, setHasFetchedPage1] = useState(false);
 
   const loadMovies = () => {
-    if (hasMore && !loading) {
+    if (hasMore && !loading && encodedQuery) {
       setLoading(true);
-      dispatch(fetchMovies(page.toString()));
+      dispatch(fetchMoviesBySearch([page.toString(), encodedQuery]));
     }
   };
 

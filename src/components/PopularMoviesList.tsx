@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { fetchMovies } from '@/redux/movies-slice';
+import { fetchPopularMovies } from '@/redux/movies-slice';
 import { MovieCard } from './MovieCard';
 import { RootState } from '@/redux/store';
 import { useAppDispatch } from '@/hooks/hooks';
 import { useInfiniteScroll } from '@/hooks/hooks';
 import { IMovieCardProps } from '@/types/types';
 
-export function MoviesList() {
-  const { list: fetchedMovies, isLoaded, error } = useSelector((state: RootState) => state.movies);
+export function PopularMoviesList() {
+  const { listPopular: fetchedMovies, isLoaded, error } = useSelector((state: RootState) => state.movies);
   const dispatch = useAppDispatch();
   const [movies, setMovies] = useState<IMovieCardProps[]>([]);
   const [page, setPage] = useState(1);
@@ -19,7 +19,7 @@ export function MoviesList() {
   const loadMovies = () => {
     if (hasMore && !loading) {
       setLoading(true);
-      dispatch(fetchMovies(page.toString()));
+      dispatch(fetchPopularMovies(page.toString()));
     }
   };
 
